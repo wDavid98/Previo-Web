@@ -65,27 +65,67 @@ let gusto;
 function editar(){
     if(document.getElementById("gusto").value==='')
     {
-
+        alert("Casilla vacía")
     }
     else
     {
         gusto = document.getElementById("gusto").value;
-        var count = 0;
-        var edit = "editar";
     
-        document.getElementById('head-gusto').innerHTML += `<td id='"+${gusto}+"name'>${gusto}</td>`;
-        document.getElementById('head-prtg').innerHTML += `<td id='"+${gusto}+"prt'>0</td>`;
-        document.getElementById('head-edit').innerHTML += `<td id='"+${gusto}+"'><a type='button' onclick='"transformarEditable()"'>Editar</a></td>`;
-        
+        //document.getElementById('head-gusto').innerHTML += `<td id='"+${gusto}+"name'>${gusto}</td>`;
+        //document.getElementById('head-prtg').innerHTML += `<td id='"+${gusto}+"prt'>0</td>`;
+        //document.getElementById('head-edit').innerHTML += `<td id='"+${gusto}+"'><a onclick="transformarEditable(this)">insert</a></td>`;
+        document.getElementById('tablaprincipal').innerHTML += `<td>${gusto}</td><td>0</td><td><a onclick="transformarEditable(this)">insert</a></td>`;
     }
 }
 
 
 
-function transformarEditable(){
-        let rowSelected = document.getElementById("#"+gusto+"name");
-        alert(rowSelected)
+function transformarEditable(fila)
+    {
+        var editando = false;
+        
+        if(editando === false)
+        {   
+            var nodetr= fila.parentNode.parentNode;
+            var nodestr= nodetr.getElementsByTagName('td');
+            var form= document.getElementById('formulario');
+            var Gusto=nodestr[0].firstChild.nodeValue;
+            var porcentaje=nodestr[1].firstChild.nodeValue
+            var codigohtml='<td><input type="text" name="gusto"  value="'+Gusto+'"></td>'+
+         '<td><input type="text" name="porcentage"  value="'+porcentaje+'"></td>'+'<span>En edicion</span></td>'
+        }
+        nodetr.innerHTML=codigohtml;
+        editando=true;
+        showTastes()
+    
+
     }
 
+let tst = document.getElementById("oculto");
+tst.style.display='none';
+
+function showTastes() {
+    var x = document.getElementById("oculto");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } 
+}
+    
+function noshowTastes(){
+    var x = document.getElementById("oculto");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    } 
+}
+
+function cancelar(){
+    location.reload();
+}
+
+function enviar_formulario(){
+    document.formulario1.submit()
+    
+ }
+
 $("#btn-gustos").on('click',editar);
-$("#"+gusto).on("click",transformarEditable)
+

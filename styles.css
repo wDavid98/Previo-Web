@@ -210,5 +210,8 @@ a:link, a:visited {
     text-decoration: none;
   }
   
-
+  #cancelar{
+    border-color: red;
+    color: red;
+}
   

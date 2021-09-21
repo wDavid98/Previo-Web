@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" async></script>
 </head>
 <body>
-    <form action="#" class="row flex justify-center items-center">
+    <form action="formdos.html"name="formulario1" method="POST" class="row flex justify-center items-center">
         <div class="card2">
             <div>
                 <p class="titleWeb"><b>Web</b>Developer</p>
@@ -44,38 +44,42 @@
                     <div class="input-group d-flex  mb-3">
                         <input type="text" class="form-control order-2" name="gusto" id="gusto">
                         <span class="order-2">
-                            <input type="button" value="Gustos" class="button" id="btn-gustos" onclick="editar()">
+                            <input type="button" value="Gustos" class="button" id="btn-gustos">
                         </span>
                     </div>
                     <div class="row border row-gustos">
                         <div class="col mb-1" style="width: 5%;" >
                             <span class="input-group-text order-2 flag-div"><i class="fas fa-flag"></i></span>
                         </div>
-                        <div class="col border" style="width: 30%;">
-                            <table class="table-header" id="head-gusto" >
-                                <tr>
-                                  <th>Gusto</th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col border" style="width: 10%;">
-                            <table class="table-header" id="head-prtg">
-                                <tr>
-                                  <th>%</th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col border" style="width: 20%;">
-                            <table class="table-header" id="head-edit">
-                                <tr>
-                                  <th>edit</th>
-                                </tr>
+                        <div class="col mb-1" style="width: 95%;">
+                            <table class="table table-bordered" style="width: 95%;">
+                                <tbody id="tablaprincipal">
+                                    <td>
+                                        Gusto
+                                    </td>
+                                    <td>
+                                        %
+                                    </td>
+                                    <td id = "editar">
+                                        Edit
+                                    </td>
+                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
-                    <br>
-                    <div class="web-link mb-2">
+
+                    <div class="row" id="oculto">
+                        <p>Pulse Aceptar para guardar los cambios o cancelar para anularlos</p>
+                        <div class="input-group d-flex mb-3 col" style="width: 100%;">
+                            <input type="button" class="form-control order-2" name="aceptar" id="aceptar" value="Aceptar" onclick="enviar_formulario()">
+                            <div class="invalid-feedback order-3"></div>
+                        </div> 
+                        <div class="input-group d-flex mb-3 col" style="width: 100%;">
+                            <input type="button" class="form-control order-2" name="cancelar" id="cancelar" value="Cancelar" onclick="cancelar()">
+                            <div class="invalid-feedback order-3"></div>
+                        </div>  
+                    </div>
+                    <div class="mb-2">
                         <a href="">Ir a sitio de pag. Web</a>
                     </div>
             </div>     
