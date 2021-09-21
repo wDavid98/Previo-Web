@@ -91,8 +91,8 @@ function transformarEditable(fila)
             var form= document.getElementById('formulario');
             var Gusto=nodestr[0].firstChild.nodeValue;
             var porcentaje=nodestr[1].firstChild.nodeValue
-            var codigohtml='<td><input type="text" name="gusto"  value="'+Gusto+'"></td>'+
-         '<td><input type="text" name="porcentage"  value="'+porcentaje+'"></td>'+'<span>En edicion</span></td>'
+            var codigohtml='<td><input id="editname" type="text" name="gusto"  value="'+Gusto+'"></td>'+
+         '<td><input type="text" name="porcentage" id="editprt" value="'+porcentaje+'"></td>'+'<span>En edicion</span></td>'
         }
         nodetr.innerHTML=codigohtml;
         editando=true;
@@ -122,10 +122,18 @@ function cancelar(){
     location.reload();
 }
 
+
+
 function enviar_formulario(){
     document.formulario1.submit()
-    
+    localStorage.setItem('name',document.getElementById('name').value)
+    localStorage.setItem('email',document.getElementById('email').value)
+    localStorage.setItem('telefono',document.getElementById('telefono').value)
+    localStorage.setItem('gusto',document.getElementById('editname').value)
+    localStorage.setItem('editprt',document.getElementById('editprt').value) 
  }
+
+
 
 $("#btn-gustos").on('click',editar);
 
